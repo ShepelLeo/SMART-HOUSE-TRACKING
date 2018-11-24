@@ -1,0 +1,53 @@
+<!DOCTYPE html> 
+
+<head> 
+<title></title> 
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script> 
+<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script> 
+
+<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.."></script> 
+</head> 
+
+<body> 
+<div id="temp-container"> </div> 
+<div id="bigTextEvaluationStudents"></div> 
+</body> 
+
+
+
+<script> 
+(function() { 
+	const config = { 
+		apiKey: "AIzaSyCSRJ-480mH7WFi2PCPWzqhPL-ktx3AzM8", 
+		authDomain: "fablab-moscow.firebaseapp.com", 
+		databaseURL: "https://fablab-moscow.firebaseio.com", 
+		projectId: "fablab-moscow", 
+		storageBucket: "fablab-moscow.appspot.com", 
+		messagingSenderId: "292679853906" 
+	}; 
+
+	firebase.initializeApp(config); 
+	const bigTextEvaluationStudents = document.getElementById('bigTextEvaluationStudents'); 
+	const dbBigTextEvaluationStudentsRef = firebase.database().ref().child('users'); 
+	dbBigTextEvaluationStudentsRef.on('value', snap => bigTextEvaluationStudents.innerText = snap.val()); 
+
+	var table = document.querySelector('#temp-container'); 
+	const dbEvaluationStudentsRef = firebase.database().ref().child('users'); 
+	dbEvaluationStudentsRef.on('value', snap => { 
+		while(table.hasChildNodes()) { 
+		table.removeChild(table.firstChild); 
+	} 
+
+	var students = snap.val(); 
+	for(var i in students) { 
+		for(var j in students[i]) { 
+			var temp = document.getElementById('temp-container'); 
+			temp.innerHTML += students[i][j]; 
+		} 
+	} 
+	}); 
+}()); 
+</script> 
+
+</html>

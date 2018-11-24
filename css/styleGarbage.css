@@ -1,0 +1,62 @@
+.container {
+  font-family: 'Roboto', sans-serif;
+}
+
+.container-garbage {
+  margin-top:4rem;
+}
+
+button{
+  padding: 20px;
+  width: 248px;
+  height: 100px;
+}
+
+#glass{
+  /**position: absolute;
+  border-radius: 0px 0px 5px 5px;
+  left: 150px;
+  top: 250px; **/
+  margin: 0 auto;
+  width: 200px;
+  height: 200px;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+}
+
+
+.empty-glass{
+  margin: 0 auto;
+  width: 200px;
+  height: 200px;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  background-color: #ededed;
+}
+
+#water{
+  position: absolute;
+  bottom: 2px;
+  width: 196px;
+  background-color: #fd6e98;
+}
+
+.bin-title {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.inactive {
+  color: #ccc;
+}
+
+.main-title {
+  margin-bottom: 8rem;
+}
+
+
+#map {
+  width: 100%; height: 100%; padding: 0; margin: 0;
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<head>
+	<title></title>
+	<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-app.js"></script>
+  	<script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-database.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+    <body>
+        <div id="temp-container"> </div>
+       
+    </body>
+
+    <script>
+
+
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCSRJ-480mH7WFi2PCPWzqhPL-ktx3AzM8",
+        authDomain: "fablab-moscow.firebaseapp.com",
+        databaseURL: "https://fablab-moscow.firebaseio.com",
+        projectId: "fablab-moscow",
+        storageBucket: "fablab-moscow.appspot.com",
+        messagingSenderId: "292679853906"
+      };
+      firebase.initializeApp(config);
+    </script>
+
+	<script>
+
+    function writeUserData(userId, name, email, imageUrl) {
+        console.log("yho");
+      firebase.database().ref('users/' + userId).set({
+        username: name,
+        email: email,
+        profile_picture : imageUrl
+      });
+
+    }
+
+    writeUserData(2, "Azam", "aztapps@gmail.com", 'https://i1.rgstatic.net/ii/profile.image/603743926108170-1520955177156_Q64/Azamat_Tavitov.jpg');
+
+    // change on update
+    var starCountRef = firebase.database().ref('users/' + userId + '/name');
+    starCountRef.on('value', function(snapshot) {
+      //updateStarCount(postElement, snapshot.val());
+      console.log(snapshot.val());
+    });
+
+    // read data once - no update
+    var userId = 1; //firebase.auth().currentUser.uid;
+    firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+      var username = (snapshot.val() && snapshot.val().username) || 'Anonymous';
+      console.log(username);
+      
+      $( "#temp-container" ).append(username);
+    });
+
+  </script>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/5.5.9/firebase.js"></script>
+
+</html>
